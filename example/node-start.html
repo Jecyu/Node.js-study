@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Node.js 基础</title>
+</head>
+<body>
+  <h1>Node.js 基础</h1>
+  <hr>
+  <ol>
+    <li>
+      <h4>异步</h4>
+      <img src="" alt="">
+    </li>
+    <li>
+      <h4>Hello World HTTP 服务器</h4>
+      <pre>
+        <code>
+          var http = require('http');
+          var server = http.createServer();
+          server.on('request', function(req, res) {
+            // 发送 HTTP 头部 
+            // HTTP 状态值: 200 : OK
+            // 内容类型: text/plain
+            res.writeHead('200', {'Content-Tyep': 'text/plain' });
+            res.end('Hello World\n');
+          })
+          server.listen(3000);
+          console.log('Server running at http://localhost:3000/');
+        </code>
+      </pre>
+    </li>
+    <li>
+      <h4>流数据</h4>
+      <pre>
+        <code>
+          var stream = fs.createReadStream('./resource.json');
+          // 当有新的数据块准备好时会激发 data 事件
+          stream.on('data', function(chunk) {
+            console.log('chunck');
+          })
+          stream.on('end', function(chunk) {
+            console.log('finished');
+          })
+        </code>
+      </pre>
+    </li>
+  </ol>
+</body>
+</html>
